@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" ></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Telecom Customer Prediction Model</title>
+
+<!-- Form Styling -->
+
+    <style type="text/css">
+      body{
+        background-color: white;
+        background-image: url(http://www.allwhitebackground.com/images/6/Technology-Background-High-Quality-Image.jpeg);
+      }
+      h1{
+        text-align: center;
+        color:white;
+      }
+      form{
+        width: 500px;
+      }
+      .jumbotron{
+        width: 100px;
+        background-color: blue;
+      }
+    </style>
+<!-- Form Validation -->
+<script type="text/javascript">
+    $(function () {
+        $("#res").bind("click", function () {
+            $("#a1")[0].selectedIndex = 0;
+			$("#a2")[0].selectedIndex = 0;
+        });
+    });
+</script>
+<script> 
+function validate()                                    
+{  
+    var partner =  document.forms["prediction"]["Partner"];
+    var dependents =  document.forms["prediction"]["Dependents"];
+    var tenure =  document.forms["prediction"]["tenure"];
+    var internetservice =  document.forms["prediction"]["InternetService"];
+    var onlinesecurity =  document.forms["prediction"]["OnlineSecurity"];
+    var onlinebackup =  document.forms["prediction"]["onlinebackup"];
+    var deviceprotection =  document.forms["prediction"]["DeviceProtection"];
+    var techsupport =  document.forms["prediction"]["TechSupport"];
+    var contract =  document.forms["prediction"]["Contract"];
+    var paperlessbilling =  document.forms["prediction"]["PaperlessBilling"];
+    var paymentmethod =  document.forms["prediction"]["PaymentMethod"];
+    var monthlycharges =  document.forms["prediction"]["MonthlyCharges"];
+    var totalcharges =  document.forms["prediction"]["TotalCharges"];  
+    var seniorcitizen =  document.forms["prediction"]["seniorcitizen"];
+
+    if (partner.value == "")                  
+    { 
+        window.alert("Please enter a valid value. (Partner)"); 
+        partner.focus(); 
+        return false; 
+    }
+
+    if (dependents.value == "")                  
+    { 
+        window.alert("Please enter a valid value. (Dependents)"); 
+        dependents.focus(); 
+        return false; 
+    }  
+
+    if (tenure.value == "")                                  
+    { 
+        window.alert("This feild is required for submission of your form. (Tenure)"); 
+        tenure.focus(); 
+        return false; 
+    }  
+
+    if (internetservice.value == "")                  
+    { 
+        window.alert("Please enter a valid value. (InternetService)"); 
+        internetservice.focus(); 
+        return false; 
+    }
+
+    if (onlinesecurity.value == "")                  
+    { 
+        window.alert("Please enter a valid value. (OnlineSecurity)"); 
+        onlinesecurity.focus(); 
+        return false; 
+    }
+
+    if (onlinebackup.value == "")                  
+    { 
+        window.alert("Please enter a valid value. (OnlineBackup)"); 
+        onlinebackup.focus(); 
+        return false; 
+    }
+
+    if (deviceprotection.value == "")                  
+    { 
+        window.alert("Please enter a valid value. (DeviceProtection)"); 
+        deviceprotection.focus(); 
+        return false; 
+    }
+
+    if (techsupport.value == "")                  
+    { 
+        window.alert("Please enter a valid value. (TechSupport)"); 
+        techsupport.focus(); 
+        return false; 
+    }
+
+    if (contract.value == "")                  
+    { 
+        window.alert("Please enter a valid value. (Contract)"); 
+        contract.focus(); 
+        return false; 
+    }
+
+    if (paperlessbilling.value == "")                  
+    { 
+        window.alert("Please enter a valid value. (PaperlessBilling)"); 
+        paperlessbilling.focus(); 
+        return false; 
+    }
+
+    if (paymentmethod.value == "")                  
+    { 
+        window.alert("Please enter a valid value. (PaymentMethod)"); 
+        paymentmethod.focus(); 
+        return false; 
+    }
+
+    if (monthlycharges.value == "")                                  
+    { 
+        window.alert("This feild is required for submission of your form. (MonthlyCharges)"); 
+        monthlycharges.focus(); 
+        return false; 
+    }
+
+    if (totalcharges.value == "")                                  
+    { 
+        window.alert("This feild is required for submission of your form. (TotalCharges)"); 
+        totalcharges.focus(); 
+        return false; 
+    }
+
+    if (seniorcitizen.value == "")                  
+    { 
+        window.alert("Please enter a valid number. (Senior Citizen)"); 
+        seniorcitizen.focus(); 
+        return false; 
+    } 
+
+    return true; 
+}
+</script> 
+  
+  </head>
+  <body>
+    <!-- Header Part -->
+    <div class="header">
+  <br>
+        <center><img src="https://scx2.b-cdn.net/gfx/news/2018/howscientist.gif" style="width: 150px; height:150px; border-radius: 50%;"></center>
+        <h1 style="text-align: center;">Telecom Customer Churn Predictor</h1>
+      </div>
+<br>
+    
+      <!-- Form -->
+<form id="contactForm" method="post" name="prediction" action="{{ url_for ('predict') }}" onsubmit="return validate()">
+
+
+    <div class="row">
+    
+    <div class="form-group col-md-8" style="margin-left: 55%;">
+      <label for="inputPartner" style="color: white;"><b>Partner</b></label>
+     <!-- <input type="text" id="inputPartner" id="a1" class="form-control" name="Partner" placeholder="Partner"> -->
+      <select id="inputPartner" id="a1" class="form-control" name="Partner">
+        <option value="0" >Choose...</option>
+        <option style="font-weight:bold;color:#09C;">Yes</option>
+        <option style="font-weight:bold;color:#09C;">No</option>
+      </select>
+    </div>
+    <div class="form-group col-md-8" style="margin-left: 140%; margin-top: -16%;">
+      <label for="inputDependents"style="color: white;"><b>Dependents</b></label>
+     <!-- <input type="text" id="inputDependents" id="a2" class="form-control" name="Dependents" placeholder="Dependents"> -->
+     <select id="inputDependents" id="a2" class="form-control" name="Dependents">
+        <option value="0" >Choose...</option>
+        <option style="font-weight:bold;color:#09C;">Yes</option>
+        <option style="font-weight:bold;color:#09C;">No</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="row">
+    
+    <div class="form-group col-md-8" style="margin-left: 55%;">
+      <label for="inputTenure" style="color: white;"><b>tenure</b></label>
+      <input type="text" name="tenure" class="form-control" id="inputTenure" placeholder="Tenure" >
+    </div>
+    <div class="form-group col-md-8" style="margin-left: 140%; margin-top: -16%;">
+      <label for="inputInternetService" style="color: white;"><b>InternetService</b></label>
+     <!-- <input type="text" id="inputInternetService" id="a1" class="form-control" name="InternetService" placeholder="Internet Service"> -->
+     <select id="inputInternetService" id="a1" class="form-control" name="InternetService">
+        <option value="0" >Choose...</option>
+        <option style="font-weight:bold;color:#09C;">DSL</option>
+        <option style="font-weight:bold;color:#09C;">Fiber Optics</option>
+        <option style="font-weight:bold;color:#09C;">NO</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="form-group col-md-8" style="margin-left: 55%;">
+      <label for="inputOnlineSecurity" style="color: white;"><b>OnlineSecurity</b></label>
+      <!-- <input type="text" id="inputOnlineSecurity" id="a1" class="form-control" name="OnlineSecurity" placeholder="Online Security"> -->
+      <select id="inputOnlineSecurity" id="a1" class="form-control" name="OnlineSecurity">
+        <option value="0" >Choose...</option>
+        <option style="font-weight:bold;color:#09C;">Yes</option>
+        <option style="font-weight:bold;color:#09C;">No</option>
+        <option style="font-weight:bold;color:#09C;">No Internet Service</option>
+      </select>
+    </div>
+    <div class="form-group col-md-8" style="margin-left: 140%; margin-top: -16%;">
+      <label for="inputonlinebackup" style="color: white;"><b>onlinebackup</b></label>
+      <!-- <input type="text" id="inputonlinebackup" id="a1" class="form-control" name="onlinebackup" placeholder="Online Backup">--> 
+      <select id="inputonlinebackup" id="a1" class="form-control" name="onlinebackup">
+        <option value="0" >Choose...</option>
+        <option style="font-weight:bold;color:#09C;">Yes</option>
+        <option style="font-weight:bold;color:#09C;">No</option>
+        <option style="font-weight:bold;color:#09C;">No Internet Service</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="row">
+    
+    <div class="form-group col-md-8" style="margin-left: 55%;">
+      <label for="inputDeviceProtection" style="color: white;"><b>DeviceProtection</b></label>
+      <!-- <input type="text" id="inputDeviceProtection" id="a1" class="form-control" name="DeviceProtection" placeholder="Device Protection"> -->
+      <select id="inputDeviceProtection" id="a1" class="form-control" name="DeviceProtection">
+        <option value="0" >Choose...</option>
+        <option style="font-weight:bold;color:#09C;">Yes</option>
+        <option style="font-weight:bold;color:#09C;">No</option>
+        <option style="font-weight:bold;color:#09C;">No Internet Service</option>
+      </select>
+    </div>
+    <div class="form-group col-md-8" style="margin-left: 140%; margin-top: -16%;">
+      <label for="inputTechSupport" style="color: white;"><b>TechSupport</b></label>
+     <!--  <input type="text" id="inputTechSupport" id="a1" class="form-control" name="TechSupport" placeholder="Tech Support"> -->
+     <select id="inputTechSupport" id="a1" class="form-control" name="TechSupport">
+        <option value="0" >Choose...</option>
+        <option style="font-weight:bold;color:#09C;">Yes</option>
+        <option style="font-weight:bold;color:#09C;">No</option>
+        <option style="font-weight:bold;color:#09C;">No Internet Service</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="row">
+    
+    <div class="form-group col-md-8" style="margin-left: 55%;">
+      <label for="inputContract" style="color: white;"><b>Contract</b></label>
+     <!-- <input type="text" id="inputContract" id="a1" class="form-control" name="Contract" placeholder="Contract"> -->
+     <select id="inputContract" id="a1" class="form-control" name="Contract">
+        <option value="0" >Choose...</option>
+        <option style="font-weight:bold;color:#09C;">Month to Month</option>
+        <option style="font-weight:bold;color:#09C;">One Year</option>
+        <option style="font-weight:bold;color:#09C;">Two Year</option>
+      </select>
+    </div>
+    <div class="form-group col-md-8" style="margin-left: 140%; margin-top: -16%;">
+      <label for="inputPaperlessBilling" style="color: white;"><b>PaperlessBilling</b></label>
+     <!-- <input type="text" id="inputPaperlessBilling" id="a1" class="form-control" name="PaperlessBilling" placeholder="Paperless Billing"> -->
+     <select id="inputPaperlessBilling" id="a1" class="form-control" name="PaperlessBilling">
+        <option value="0">Choose...</option>
+        <option style="font-weight:bold;color:#09C;">Yes</option>
+        <option style="font-weight:bold;color:#09C;">No</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="row">
+    
+    <div class="form-group col-md-8" style="margin-left: 55%;">
+      <label for="inputPaymentMethod" style="color: white;"><b>PaymentMethod</b></label>
+      <!-- <input type="text" id="inputPaymentMethod" id="a1" class="form-control" name="PaymentMethod" placeholder="Payment Method"> -->
+      <select id="inputPaymentMethod" id="a1" class="form-control" name="PaymentMethod">
+        <option value="0" >Choose...</option>
+        <option style="font-weight:bold;color:#09C;">Electronic check</option>
+        <option style="font-weight:bold;color:#09C;">Mailed check</option>
+        <option style="font-weight:bold;color:#09C;">Bank transfer (automatic)</option>
+        <option style="font-weight:bold;color:#09C;">Credit card (automatic)</option>
+      </select>
+    </div>
+    <div class="form-group col-md-8" style="margin-left: 140%; margin-top: -16%;">
+      <label for="inputMonthlyCharges" style="color: white;"><b>MonthlyCharges</b></label>
+      <input type="name" name="MonthlyCharges" class="form-control" id="inputMonthlyCharges" placeholder="Monthly Charges" >
+    </div>
+  </div>
+
+    <div class="row">
+    
+    <div class="form-group col-md-8" style="margin-left: 55%;">
+      <label for="inputTotalCharges" style="color: white;"><b>TotalCharges</b></label>
+      <input type="name" name="TotalCharges" class="form-control" id="inputTotalCharges" placeholder="Total Charges" >
+    </div>
+    <div class="form-group col-md-8" style="margin-left: 140%; margin-top: -16%;">
+      <label for="inputSeniorcitizen" style="color: white;"><b>SeniorCitizen</b></label>
+      <input type="text" id="inputSeniorcitizen" id="a2" class="form-control" name="SeniorCitizen" placeholder="Senior Citizen">
+    </div>
+</div>
+
+    <div class="row">
+    <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4" style="margin-left: 95%;">
+          <button type="submit" id="submit" class="btn btn-warning" style="width: 290px; background-color:blue; color:white;"><b>Submit</b><span class="glyphicon glyphicon-send"></span></button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4" style="margin-left: 238%; margin-top: -24%;">
+          <button type="reset" id="res" name="reset" class="btn btn-warning" style="width: 290px; background-color:blue; color:white;"><b>Reset all Fields</b><span class="glyphicon glyphicon-send"></span></button>
+        </div>
+      </div> 
+    </div>
+
+  <label id="result"></label>
+</form>
+ <br>
+      <h3 style="color: white; background-color: #5a03fc; text-align: center;">{{ prediction_text }} </h3>
+  </body>
+</html>
